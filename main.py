@@ -9,7 +9,7 @@ import pandas as pd
 from k_means_clustering import KMeansClustering
 
 
-def get_preprocessed_data(tweet_cnt, file="data/goodhealth.txt"):
+def get_preprocessed_data(tweet_cnt, file="data/bbchealth.txt"):
     lines = []
     if tweet_cnt != 0:
         for file in os.listdir("data/"):
@@ -63,9 +63,11 @@ if __name__ == '__main__':
     tweets = get_preprocessed_data(tweet_cnt=args.data_size)
     # Experiments
     results = []
-    for k in range(5, args.max_k, 5):
+    for k in range(3, args.max_k, 3):
         print(f"Running k-means clustering with {k} clusters")
-        results.append((k, KMeansClustering(k).train(tweets)))
+        kmeans = KMeansClustering(k)
+        results.append((k, kmeans.train(tweets)))
+        kmeans.print_clusters()
         print()
     # Create the plot
     plt.rcParams['figure.figsize'] = [10, 8]
@@ -75,4 +77,4 @@ if __name__ == '__main__':
     plt.ylabel("SSE")
     plt.savefig("results/k_means_elbow.png")
     # Save results
-    pd.DataFrame(results, columns=["k", "SSE"]).to_csv("results/k_means_elbow.csv", index=False)
+    pd.DataFrame(results, columns=["k", "SSE"]).to_csv("results/k_means.csv", index=False)

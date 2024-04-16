@@ -73,3 +73,7 @@ class KMeansClustering:
         intersection = set(t1).intersection(t2)
         union = set().union(t1, t2)
         return 1 - (len(intersection) / len(union))
+
+    def print_clusters(self):
+        for cluster_id in self.clusters:
+            print(f"Cluster {cluster_id} Length: {len(self.clusters[cluster_id][1])}")
