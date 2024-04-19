@@ -13,7 +13,7 @@ class KMeansClustering:
 
     def train(self, data):
         data = [x.split(' ') for x in data]
-        self.centroids = [data[random.randint(0, len(data)-10)] for i in range(self.k)]
+        self.centroids = [sorted(data)[random.randint(0, len(data)-1)] for i in range(self.k)]
         self.clusters = {i: [self.centroids[i], set(), 0] for i in range(self.k)}
         convergence_threshold = 0
         for i in range(1, self.max_iters + 1):
@@ -42,7 +42,7 @@ class KMeansClustering:
                 clusters[cluster_id][0] = list(centroid)
                 self.centroids[cluster_id] = list(centroid)
             if self.centroids == prev_centroids:
-                if convergence_threshold > 3:
+                if convergence_threshold > 1:
                     break_ = True
                 else:
                     convergence_threshold += 1
@@ -70,10 +70,12 @@ class KMeansClustering:
 
     @staticmethod
     def jaccard_distance(t1, t2):
-        intersection = set(t1).intersection(t2)
-        union = set().union(t1, t2)
-        return 1 - (len(intersection) / len(union))
+        return 1 - (len(set(t1).intersection(t2)) /
+                    len(set().union(t1, t2)))
 
     def print_clusters(self):
+        s = []
         for cluster_id in self.clusters:
-            print(f"Cluster {cluster_id} Length: {len(self.clusters[cluster_id][1])}")
+            s.append(f"Cluster {cluster_id} Length: {len(self.clusters[cluster_id][1])}")
+        print("\n".join(s))
+        return s

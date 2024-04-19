@@ -1,0 +1,8 @@
+k,SSE,Clusters
+3,6088.507383364486,"['Cluster 0 Length: 2992', 'Cluster 1 Length: 3286', 'Cluster 2 Length: 1091']"
+4,6076.251490910405,"['Cluster 0 Length: 2891', 'Cluster 1 Length: 1226', 'Cluster 2 Length: 1280', 'Cluster 3 Length: 1972']"
+5,6002.102131605037,"['Cluster 0 Length: 1309', 'Cluster 1 Length: 1242', 'Cluster 2 Length: 2643', 'Cluster 3 Length: 914', 'Cluster 4 Length: 1261']"
+6,5971.8601988946775,"['Cluster 0 Length: 1924', 'Cluster 1 Length: 2676', 'Cluster 2 Length: 788', 'Cluster 3 Length: 708', 'Cluster 4 Length: 246', 'Cluster 5 Length: 1027']"
+7,5891.591953933149,"['Cluster 0 Length: 1672', 'Cluster 1 Length: 1070', 'Cluster 2 Length: 2182', 'Cluster 3 Length: 359', 'Cluster 4 Length: 364', 'Cluster 5 Length: 961', 'Cluster 6 Length: 761']"
+8,5903.594661768768,"['Cluster 0 Length: 1696', 'Cluster 1 Length: 676', 'Cluster 2 Length: 618', 'Cluster 3 Length: 645', 'Cluster 4 Length: 1482', 'Cluster 5 Length: 1225', 'Cluster 6 Length: 750', 'Cluster 7 Length: 277']"
+9,5805.324769830808,"['Cluster 0 Length: 1682', 'Cluster 1 Length: 628', 'Cluster 2 Length: 539', 'Cluster 3 Length: 1155', 'Cluster 4 Length: 115', 'Cluster 5 Length: 960', 'Cluster 6 Length: 1191', 'Cluster 7 Length: 482', 'Cluster 8 Length: 617']"
