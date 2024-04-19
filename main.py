@@ -10,7 +10,7 @@ from k_means_clustering import KMeansClustering
 def get_preprocessed_data(file="data/bbchealth.txt"):
     """
     Reads data from file and returns preprocessed data
-    :param file:
+    :param file: path to the txt file (default: data/bbchealth.txt).
     :return:
     """
     lines = []
@@ -38,7 +38,7 @@ def get_preprocessed_data(file="data/bbchealth.txt"):
         # Convert every word to lowercase
         lines[i] = lines[i].lower()
 
-        # Remove punctuations
+        # Remove punctuations and symbols
         lines[i] = re.sub('[^A-Za-z0-9 ]+', '', lines[i])
         lines[i] = " ".join(lines[i].split())
     print(f"Total tweets: {len(lines)}\n")
@@ -46,9 +46,13 @@ def get_preprocessed_data(file="data/bbchealth.txt"):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--file', type=str, default="gdnhealthcare.txt")
-    parser.add_argument('--max_k', type=int, default=10)
+    # Script arguments
+    parser = argparse.ArgumentParser(description="Script to run k-means clustering on tweets and generate results")
+    parser.add_argument('--file', type=str, default="gdnhealthcare.txt",
+                        help="path to the txt file (default: data/gdnhealthcare.txt)")
+    parser.add_argument('--max_k', type=int, default=10,
+                        help="Maximum number of clusters to use: results will be generated "
+                             "from k=3 to max_k (default: 10)")
     args = parser.parse_args()
     # Data preprocessing
     tweets = get_preprocessed_data(file=f"data/{args.file}")

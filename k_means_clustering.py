@@ -5,8 +5,8 @@ class KMeansClustering:
     def __init__(self, k=5, max_iters=100):
         """
         Class for K-Means clustering
-        :param k:
-        :param max_iters:
+        :param k: number of clusters
+        :param max_iters: maximum number of iterations(algorithm will terminate if converged)
         """
         self.k = k
         self.max_iters = max_iters
@@ -16,16 +16,16 @@ class KMeansClustering:
               f"k: {self.k}\n"
               f"max_iters: {max_iters}")
 
-    def train(self, data):
+    def train(self, data, convergence_threshold=0):
         """
         Trains the KMeans clustering model
-        :param data:
-        :return:
+        :param data: list of data points
+        :param convergence_threshold: number of iterations to run after convergence
+        :return: Sum of squared error
         """
         data = [x.split(' ') for x in data]
         self.centroids = [sorted(data)[random.randint(0, len(data)-1)] for i in range(self.k)]
         self.clusters = {i: [self.centroids[i], set(), 0] for i in range(self.k)}
-        convergence_threshold = 0
         for i in range(1, self.max_iters + 1):
             print(f"Iteration: {i}", end="", flush=True)
             clusters = {i: [self.centroids[i], set(), 0] for i in range(self.k)}
@@ -36,7 +36,6 @@ class KMeansClustering:
                 cluster_id, dist = self.predict(point)
                 clusters[cluster_id][1].add(frozenset(point))
                 clusters[cluster_id][2] += dist
-
             # Update Centroids
             for cluster_id in clusters:
                 centroid = clusters[cluster_id][0]
@@ -48,24 +47,24 @@ class KMeansClustering:
                     if min_dist > dist:
                         min_dist = dist
                         centroid = point1
-
                 clusters[cluster_id][0] = list(centroid)
                 self.centroids[cluster_id] = list(centroid)
             if self.centroids == prev_centroids:
-                if convergence_threshold > 1:
+                if convergence_threshold > 0:
                     break_ = True
                 else:
                     convergence_threshold += 1
             self.clusters = clusters
             print(f"\rIteration: {i} Error: {self.__get_sse()}")
-            if break_: break
+            if break_:
+                break
         return self.__get_sse()
 
     def predict(self, data):
         """
         Assign cluster to given data
         :param data:
-        :return:
+        :return: cluster_id assigned to data point, distance from centroid to data point
         """
         min_dist = float("inf")
         cluster_id = -1
@@ -79,7 +78,7 @@ class KMeansClustering:
     def __get_sse(self):
         """
         Calculate SSE using Jaccard distance
-        :return:
+        :return: Sum of squared error
         """
         error = 0
         for cluster_id in self.clusters:
@@ -91,9 +90,9 @@ class KMeansClustering:
     def jaccard_distance(t1, t2):
         """
         Jaccard distance between two sentences
-        :param t1:
-        :param t2:
-        :return:
+        :param t1: sentence 1
+        :param t2: sentence 2
+        :return: Jaccard distance
         """
         return 1 - (len(set(t1).intersection(t2)) /
                     len(set().union(t1, t2)))
@@ -101,7 +100,7 @@ class KMeansClustering:
     def print_clusters(self):
         """
         Print all clusters
-        :return:
+        :return: list of all clusters and their assigned data points
         """
         s = []
         for cluster_id in self.clusters:
