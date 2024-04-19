@@ -3,6 +3,11 @@ import random
 
 class KMeansClustering:
     def __init__(self, k=5, max_iters=100):
+        """
+        Class for K-Means clustering
+        :param k:
+        :param max_iters:
+        """
         self.k = k
         self.max_iters = max_iters
         self.centroids = []
@@ -12,6 +17,11 @@ class KMeansClustering:
               f"max_iters: {max_iters}")
 
     def train(self, data):
+        """
+        Trains the KMeans clustering model
+        :param data:
+        :return:
+        """
         data = [x.split(' ') for x in data]
         self.centroids = [sorted(data)[random.randint(0, len(data)-1)] for i in range(self.k)]
         self.clusters = {i: [self.centroids[i], set(), 0] for i in range(self.k)}
@@ -52,6 +62,11 @@ class KMeansClustering:
         return self.__get_sse()
 
     def predict(self, data):
+        """
+        Assign cluster to given data
+        :param data:
+        :return:
+        """
         min_dist = float("inf")
         cluster_id = -1
         for cluster_index in self.clusters:
@@ -62,6 +77,10 @@ class KMeansClustering:
         return cluster_id, min_dist
 
     def __get_sse(self):
+        """
+        Calculate SSE using Jaccard distance
+        :return:
+        """
         error = 0
         for cluster_id in self.clusters:
             for point in self.clusters[cluster_id][1]:
@@ -70,10 +89,20 @@ class KMeansClustering:
 
     @staticmethod
     def jaccard_distance(t1, t2):
+        """
+        Jaccard distance between two sentences
+        :param t1:
+        :param t2:
+        :return:
+        """
         return 1 - (len(set(t1).intersection(t2)) /
                     len(set().union(t1, t2)))
 
     def print_clusters(self):
+        """
+        Print all clusters
+        :return:
+        """
         s = []
         for cluster_id in self.clusters:
             s.append(f"Cluster {cluster_id} Length: {len(self.clusters[cluster_id][1])}")

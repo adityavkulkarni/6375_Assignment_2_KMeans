@@ -1,6 +1,5 @@
 import argparse
 import re
-import string
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -9,6 +8,11 @@ from k_means_clustering import KMeansClustering
 
 
 def get_preprocessed_data(file="data/bbchealth.txt"):
+    """
+    Reads data from file and returns preprocessed data
+    :param file:
+    :return:
+    """
     lines = []
     with open(file, encoding="utf8", errors='ignore') as f:
         print(f"Reading {file}")
