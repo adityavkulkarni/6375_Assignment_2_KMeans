@@ -35,6 +35,6 @@ ___
 - [Assignment2-CS6375.pdf](Assignment2-CS6375.pdf) : assignment description 
 - [results](results) : directory for storing output 
   - [all](results/all): directory for graphs and results of all datasets
-  - [k_means_elbow_gdnhealthcare.png](reults/k_means_elbow_gdnhealthcare.png): plot of K vs SSE for data/k_means_elbow_gdnhealthcare.txt
-  - [k_means_elbow_gdnhealthcare.csv](reults/k_means_elbow_gdnhealthcare.csv): CSV contaning K, SSE and cluster distribution for data/k_means_elbow_gdnhealthcare.txt
+  - [k_means_elbow_gdnhealthcare.png](results/k_means_elbow_gdnhealthcare.png): plot of K vs SSE for data/k_means_elbow_gdnhealthcare.txt
+  - [k_means_elbow_gdnhealthcare.csv](results/k_means_gdnhealthcare.csv): CSV contaning K, SSE and cluster distribution for data/k_means_elbow_gdnhealthcare.txt
 - [CS6375_Assignment2_report](CS6375_Assignment2_report) : report for the assignment
