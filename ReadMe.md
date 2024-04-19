@@ -3,13 +3,11 @@
 ___
 ### Table of Contents:
 <!-- TOC -->
-* [CS6375 - Machine Learning](#cs6375---machine-learning)
-  * [Assignment-2 Part 2](#assignment-2-part-2)
-    * [Table of Contents:](#table-of-contents)
-    * [Dataset:](#dataset-)
-      * [File Used : gdnhealthcare.txt](#file-used--gdnhealthcaretxt)
-    * [Execution Instructions:](#execution-instructions)
-    * [File Structure:](#file-structure)
+* [Table of Contents:](#table-of-contents)
+* [Dataset:](#dataset-)
+  * [File Used : gdnhealthcare.txt](#file-used--gdnhealthcaretxt)
+* [Execution Instructions:](#execution-instructions)
+* [File Structure:](#file-structure)
 <!-- TOC -->
 ___
 ### Dataset: 
