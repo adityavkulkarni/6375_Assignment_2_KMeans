@@ -51,7 +51,7 @@ if __name__ == '__main__':
     parser.add_argument('--file', type=str, default="gdnhealthcare.txt",
                         help="path to the txt file (default: data/gdnhealthcare.txt)")
     parser.add_argument('--max_k', type=int, default=10,
-                        help="Maximum number of clusters to use: results will be generated "
+                        help="maximum number of clusters to use: results will be generated "
                              "from k=3 to max_k (default: 10)")
     args = parser.parse_args()
     # Data preprocessing
