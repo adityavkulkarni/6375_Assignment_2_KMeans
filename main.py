@@ -58,7 +58,7 @@ if __name__ == '__main__':
     tweets = get_preprocessed_data(file=f"data/{args.file}")
     # Experiments
     results = []
-    for k in range(3, args.max_k+1, 1):
+    for k in list(range(3, args.max_k+1, 1)) + [15, 20, 25, 40, 50,  75, 100]:
         print(f"Running k-means clustering with {k} clusters")
         kmeans = KMeansClustering(k)
         results.append((k, kmeans.train(tweets),
